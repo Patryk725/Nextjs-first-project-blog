@@ -3,6 +3,9 @@ import { Montserrat, Montserrat_Alternates } from "next/font/google";
 import "./globals.css";
 import { Providers } from "./providers";
 
+export const APP_NAME = process.env.NEXT_PUBLIC_APP_NAME ?? "App";
+export const APP_SLUG = process.env.NEXT_PUBLIC_APP_SLUG ?? "app";
+
 const montserrat = Montserrat({
   variable: "--font-montserrat",
   subsets: ["latin"],
@@ -15,8 +18,8 @@ const montserratAlternates = Montserrat_Alternates({
 });
 
 export const metadata: Metadata = {
-  title: { template: "Bloggin | %s", default: "Bloggin" },
-  description: "Read, create and review blogs!",
+  title: { template: `${APP_NAME} | %s`, default: APP_NAME },
+  description: "Read, create and review posts!",
 };
 
 export default function RootLayout({
