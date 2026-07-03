@@ -1,15 +1,11 @@
 "use client";
 
-import { useTheme } from "next-themes";
+import Navbar from "@/components/Navbar";
 
 export default function Home() {
-  const { theme, setTheme } = useTheme();
   return (
-    <main>
-      Hi! Which font is it?
-      <button onClick={() => setTheme(theme === "dark" ? "light" : "dark")}>
-        Toggle
-      </button>
+    <main className="min-h-[200vw]">
+      <Navbar sticky />
     </main>
   );
 }
