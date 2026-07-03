@@ -1,4 +1,5 @@
 import { clsx } from "clsx";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import Link from "./ui/Link";
 
@@ -25,10 +26,19 @@ export default function Navbar({
 }: NavProps) {
   const pathname: string = usePathname();
   return (
-    <nav className={clsx(sticky && "sticky top-0")}>
-      <div>{/* <Image /> */}</div>
+    <nav
+      className={clsx(
+        sticky && "sticky top-0",
+        "flex flex-wrap items-center justify-around gap-x-12 gap-y-6 my-4",
+      )}
+    >
       <div>
-        <ul className="flex flex-wrap gap-6">
+        <div className="p-4">
+          <Image src="/logo.png" alt="logo" width={336 / 2} height={90 / 2} />
+        </div>
+      </div>
+      <div>
+        <ul className="flex flex-wrap gap-6 flex-col md:flex-row">
           {navLink.map((e) => (
             <li
               key={e.label}
