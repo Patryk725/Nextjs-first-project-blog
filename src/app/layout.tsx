@@ -33,7 +33,7 @@ export default function RootLayout({
       suppressHydrationWarning // for ThemeProvider
       className={`${montserrat.variable} ${montserratAlternates.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">
+      <body className="flex min-h-full flex-col">
         <Providers>{children}</Providers>
       </body>
     </html>

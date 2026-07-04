@@ -20,9 +20,8 @@ type NavProps = {
 
 const defaultLinks: NavLink[] = [
   { label: "Strona główna", href: "/" },
-  { label: "Kontakt", href: "/about" },
-  { label: "Dodatkowe info o stronie", href: "/info" },
   { label: "O mnie", href: "/about-me" },
+  { label: "O stronie", href: "/about-app" },
 ];
 
 export default function Navbar({
