@@ -22,8 +22,10 @@ export default function DefaultButton({
       {...props}
       className={clsx(
         "flex cursor-pointer items-center gap-3 rounded-sm border px-3 py-2 whitespace-nowrap",
-        !colorInvert && "border-foreground hover:bg-background-hover",
-        colorInvert && "border-background hover:bg-foreground-hover",
+        !colorInvert &&
+          "text-foreground bg-background border-foreground hover:bg-background-hover",
+        colorInvert &&
+          "text-background bg-foreground border-background hover:bg-foreground-hover",
       )}
     >
       {iconStart && React.cloneElement(iconStart, { size: iconSize })}
