@@ -31,8 +31,8 @@ export default function DefaultButton({
       {iconStart && React.cloneElement(iconStart, { size: iconSize })}
       <div
         className={clsx(
-          iconStart && "border-l pl-2",
-          iconEnd && "border-r pr-2",
+          iconStart && "border-s ps-2",
+          iconEnd && "border-e pe-2",
         )}
       >
         {children}
