@@ -26,28 +26,25 @@ export default function Navbar({
 }: NavProps) {
   const pathname: string = usePathname();
   return (
-    <nav
-      className={clsx(
-        sticky && "sticky top-0",
-        "flex flex-wrap items-center justify-around gap-x-12 gap-y-6 my-4",
-      )}
-    >
-      <div>
-        <div className="p-4">
-          <Image src="/logo.png" alt="logo" width={336 / 2} height={90 / 2} />
+    <nav className={clsx(sticky && "sticky top-0", "")}>
+      <div className="flex flex-wrap items-center justify-around gap-x-12 gap-y-6my-4">
+        <div>
+          <div className="p-4">
+            <Image src="/logo.png" alt="logo" width={336 / 2} height={90 / 2} />
+          </div>
         </div>
-      </div>
-      <div>
-        <ul className="flex flex-wrap gap-6 flex-col md:flex-row">
-          {navLink.map((e) => (
-            <li
-              key={e.label}
-              className={clsx("item", pathname == e.href && "active")}
-            >
-              <Link href={e.href}>{e.label}</Link>
-            </li>
-          ))}
-        </ul>
+        <div>
+          <ul className="flex flex-wrap gap-6 flex-col md:flex-row">
+            {navLink.map((e) => (
+              <li
+                key={e.label}
+                className={clsx("item", pathname == e.href && "active")}
+              >
+                <Link href={e.href}>{e.label}</Link>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     </nav>
   );
