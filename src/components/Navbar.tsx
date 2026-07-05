@@ -33,7 +33,7 @@ export default function Navbar({
 
   const pathname: string = usePathname();
   return (
-    <nav className={clsx(sticky && "sticky top-0")}>
+    <nav className={clsx(sticky && "sticky top-0", "border-b")}>
       <div className="flex flex-wrap items-center justify-around gap-x-12 gap-y-6 py-4">
         <div>
           <div className="p-4">
