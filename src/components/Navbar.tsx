@@ -33,11 +33,17 @@ export default function Navbar({
 
   const pathname: string = usePathname();
   return (
-    <nav className={clsx(sticky && "sticky top-0", "border-b")}>
+    <nav className={clsx(sticky && "sticky top-0", "bg-background border-b")}>
       <div className="flex flex-wrap items-center justify-around gap-x-12 gap-y-6 py-4">
         <div>
           <div className="p-4">
-            <Image src="/logo.png" alt="logo" width={336 / 2} height={90 / 2} />
+            <Image
+              loading="eager"
+              src="/logo.png"
+              alt="logo"
+              width={336 / 2}
+              height={90 / 2}
+            />
           </div>
         </div>
         <div>
