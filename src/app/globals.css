@@ -38,3 +38,7 @@ body {
   color: var(--foreground);
   font-family: var(--font), Arial, Helvetica, sans-serif;
 }
+
+h2 {
+  @apply text-xl;
+}
