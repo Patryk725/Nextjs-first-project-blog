@@ -39,6 +39,20 @@ body {
   font-family: var(--font), Arial, Helvetica, sans-serif;
 }
 
+.wrapper {
+  @apply grid;
+  grid-template-columns: 1fr min(70ch) 1fr;
+}
+
+.wrapper > * {
+  grid-column: 2;
+}
+
+.wrapper .bleed {
+  /** going out of the container */
+  grid-column: 1 / -1;
+}
+
 h2 {
   @apply text-xl;
 }
