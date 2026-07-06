@@ -39,20 +39,24 @@ body {
   font-family: var(--font), Arial, Helvetica, sans-serif;
 }
 
-.wrapper {
-  @apply grid;
-  grid-template-columns: 1fr min(70ch) 1fr;
-}
-
-.wrapper > * {
-  grid-column: 2;
-}
-
-.wrapper .bleed {
-  /** going out of the container */
+@utility bleed {
+  /** ignore container limits  */
+  display: grid;
   grid-column: 1 / -1;
 }
 
-h2 {
-  @apply text-xl;
+@layer components {
+  .wrapper {
+    @apply grid;
+    grid-template-columns: 1fr min(70ch) 1fr;
+  }
+  .wrapper > * {
+    @apply col-start-2;
+  }
+  .wrapper h2 {
+    @apply text-xl;
+  }
+  .content {
+    @apply my-8;
+  }
 }

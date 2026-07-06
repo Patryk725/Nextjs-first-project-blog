@@ -12,7 +12,7 @@ export default function Hero({
   buttons,
 }: HeroProps) {
   return (
-    <section className="bleed flex h-2/3 w-full items-center justify-center bg-red-300">
+    <section className="bleed w-full flex-1 items-center justify-center bg-red-300 py-6">
       <div className="flex max-w-[40ch] flex-col items-center justify-center gap-8">
         <h1 className="text-5xl">{title}</h1>
         <div>{description}</div>

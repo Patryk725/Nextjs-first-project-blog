@@ -1,6 +1,6 @@
 "use client";
 
-import Hero from "@/components/ui/Hero";
+import Hero from "@/components/Hero";
 import {
   IoCreateOutline,
   IoPeopleOutline,
@@ -9,7 +9,7 @@ import {
 
 export default function Home() {
   return (
-    <main className="min-h-[200vw]">
+    <main className="wrapper content mt-0">
       <Hero
         title="BlogRn"
         description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Est vero accusamus veniam ut, dolore necessitatibus non aliquid dicta cupiditate ducimus vitae corrupti quisquam! Eius, ea. Ab modi architecto vitae neque."
@@ -19,6 +19,7 @@ export default function Home() {
           <IoShareOutline key="share" />,
         ]}
       />
+      test
     </main>
   );
 }

@@ -8,10 +8,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <div className="wrapper">
+    <div>
       <Navbar sticky />
-      <div className="my-3">
-        <div className="my-12">
+      <div>
+        <div>
           {<Breadcrumbs separator={<IoChevronForwardOutline size={24} />} />}
         </div>
         {children}

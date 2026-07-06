@@ -16,6 +16,7 @@ type NavLink = {
 type NavProps = {
   sticky?: boolean;
   navLink?: NavLink[];
+  className?: string;
 };
 
 const defaultLinks: NavLink[] = [
@@ -27,14 +28,19 @@ const defaultLinks: NavLink[] = [
 export default function Navbar({
   sticky = false,
   navLink = defaultLinks,
+  className,
 }: NavProps) {
   const [logged_in_test, setTest] = useState<boolean>(false);
-  const handleTest = () => setTest((p) => !p);
+  const handleTest = () => setTest(p => !p);
 
   const pathname: string = usePathname();
   return (
     <nav
-      className={clsx(sticky && "sticky top-0", "bg-background bleed border-b")}
+      className={clsx(
+        sticky && "sticky top-0",
+        "bg-background bleed border-b",
+        className,
+      )}
     >
       <div className="flex flex-wrap items-center justify-around gap-x-12 gap-y-6 py-4">
         <div>
@@ -50,7 +56,7 @@ export default function Navbar({
         </div>
         <div>
           <ul className="flex flex-col flex-wrap gap-6 md:flex-row">
-            {navLink.map((e) => (
+            {navLink.map(e => (
               <li
                 key={e.label}
                 className={clsx("item", pathname == e.href && "active")}
