@@ -3,7 +3,7 @@
 import { clsx } from "clsx";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { IoLogInOutline, IoPersonCircleOutline } from "react-icons/io5";
 import DefaultButton from "./ui/Button/DefaultButton";
 import Link from "./ui/Link";
@@ -17,6 +17,7 @@ type NavProps = {
   sticky?: boolean;
   navLink?: NavLink[];
   className?: string;
+  heroOffset?: boolean;
 };
 
 const defaultLinks: NavLink[] = [
@@ -30,8 +31,19 @@ export default function Navbar({
   navLink = defaultLinks,
   className,
 }: NavProps) {
+  //! TEMP TESTING
   const [logged_in_test, setTest] = useState<boolean>(false);
   const handleTest = () => setTest(p => !p);
+
+  const nav = useRef<HTMLElement | null>(null);
+  useEffect(() => {
+    if (!nav.current) return;
+
+    document.documentElement.style.setProperty(
+      "--main-nav-height",
+      `${nav.current.getBoundingClientRect().height}px`,
+    );
+  }, []);
 
   const pathname: string = usePathname();
   return (
@@ -41,6 +53,7 @@ export default function Navbar({
         "bg-background bleed border-b",
         className,
       )}
+      ref={nav}
     >
       <div className="flex flex-wrap items-center justify-around gap-x-12 gap-y-6 py-4">
         <div>

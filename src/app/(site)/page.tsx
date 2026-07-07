@@ -9,7 +9,6 @@ import {
 
 export default function Home() {
   return (
-    // TODO: hero MUST take 100vh - navbar DYNAMIC height
     <main className="wrapper content mt-0">
       <Hero
         title="BlogRn"
