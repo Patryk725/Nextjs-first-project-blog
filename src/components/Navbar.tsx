@@ -55,7 +55,7 @@ export default function Navbar({
       )}
       ref={nav}
     >
-      <div className="flex flex-wrap items-center justify-around gap-x-12 gap-y-6 py-4">
+      <div className="flex flex-col flex-wrap items-center justify-around gap-x-12 gap-y-6 py-4 sm:flex-row">
         <div>
           <div className="p-4">
             <Image
@@ -68,7 +68,7 @@ export default function Navbar({
           </div>
         </div>
         <div>
-          <ul className="flex flex-col flex-wrap gap-6 md:flex-row">
+          <ul className="flex flex-col gap-6 sm:flex-row">
             {navLink.map(e => (
               <li
                 key={e.label}
