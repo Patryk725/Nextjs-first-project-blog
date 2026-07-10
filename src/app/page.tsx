@@ -9,7 +9,7 @@ import {
 
 export default function Home() {
   return (
-    <main className="wrapper content mt-0">
+    <section className="wrapper">
       <Hero
         title="BlogRn"
         description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Est vero accusamus veniam ut, dolore necessitatibus non aliquid dicta cupiditate ducimus vitae corrupti quisquam! Eius, ea. Ab modi architecto vitae neque."
@@ -20,6 +20,6 @@ export default function Home() {
         ]}
       />
       <div>text</div>
-    </main>
+    </section>
   );
 }

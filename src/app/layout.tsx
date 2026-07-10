@@ -1,3 +1,4 @@
+import Navbar from "@/components/Navbar";
 import type { Metadata } from "next";
 import { Montserrat, Montserrat_Alternates } from "next/font/google";
 import "./globals.css";
@@ -33,8 +34,11 @@ export default function RootLayout({
       suppressHydrationWarning // for ThemeProvider
       className={`${montserrat.variable} ${montserratAlternates.variable} h-full antialiased`}
     >
-      <body className="flex min-h-full flex-col">
-        <Providers>{children}</Providers>
+      <body className="wrapper flex min-h-full flex-col">
+        <main className="content mt-0">
+          <Navbar sticky />
+          <Providers>{children}</Providers>
+        </main>
       </body>
     </html>
   );

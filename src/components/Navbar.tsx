@@ -58,13 +58,15 @@ export default function Navbar({
       <div className="flex flex-col flex-wrap items-center justify-around gap-x-12 gap-y-6 py-4 sm:flex-row">
         <div>
           <div className="p-4">
-            <Image
-              loading="eager"
-              src="/logo.png"
-              alt="logo"
-              width={336 / 2}
-              height={90 / 2}
-            />
+            <Link href="/">
+              <Image
+                loading="eager"
+                src="/logo.png"
+                alt="logo"
+                width={336 / 2}
+                height={90 / 2}
+              />
+            </Link>
           </div>
         </div>
         <div>

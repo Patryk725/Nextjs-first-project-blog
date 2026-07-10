@@ -10,8 +10,7 @@ const LABELS: { [key: string]: string } = {
 
 function handleLabel(slug: string) {
   return (
-    LABELS[slug] ??
-    slug.replace(/-/g, " ").replace(/^\w/, (c) => c.toUpperCase())
+    LABELS[slug] ?? slug.replace(/-/g, " ").replace(/^\w/, c => c.toUpperCase())
   );
 }
 
