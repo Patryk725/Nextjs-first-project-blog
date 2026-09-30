@@ -50,7 +50,7 @@ export default function Navbar({
     <nav
       className={clsx(
         sticky && "sticky top-0",
-        "bg-background bleed border-b",
+        "bg-background/20 bleed z-10 border-b backdrop-blur-md",
         className,
       )}
       ref={nav}
