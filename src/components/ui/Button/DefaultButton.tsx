@@ -6,7 +6,7 @@ type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
   iconEnd?: React.ReactElement<{ size?: number }>;
   iconSize?: 20;
   colorInvert?: boolean;
-  children: React.ReactNode;
+  children?: React.ReactNode;
 };
 
 export default function DefaultButton({
@@ -29,14 +29,16 @@ export default function DefaultButton({
       )}
     >
       {iconStart && React.cloneElement(iconStart, { size: iconSize })}
-      <div
-        className={clsx(
-          iconStart && "border-s ps-2",
-          iconEnd && "border-e pe-2",
-        )}
-      >
-        {children}
-      </div>
+      {children && (
+        <div
+          className={clsx(
+            iconStart && "border-s ps-2",
+            iconEnd && "border-e pe-2",
+          )}
+        >
+          {children}
+        </div>
+      )}
       {iconEnd && React.cloneElement(iconEnd, { size: iconSize })}
     </button>
   );

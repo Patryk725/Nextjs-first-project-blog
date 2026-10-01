@@ -35,10 +35,12 @@ export default function RootLayout({
       className={`${montserrat.variable} ${montserratAlternates.variable} h-full antialiased`}
     >
       <body className="wrapper flex min-h-full flex-col">
-        <main className="content mt-0">
-          <Navbar sticky />
-          <Providers>{children}</Providers>
-        </main>
+        <Providers>
+          <main className="content mt-0">
+            <Navbar sticky />
+            {children}
+          </main>
+        </Providers>
       </body>
     </html>
   );

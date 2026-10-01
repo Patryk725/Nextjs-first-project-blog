@@ -1,10 +1,16 @@
 "use client";
 
 import { clsx } from "clsx";
+import { useTheme } from "next-themes";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
-import { IoLogInOutline, IoPersonCircleOutline } from "react-icons/io5";
+import {
+  IoLogInOutline,
+  IoMoonOutline,
+  IoPersonCircleOutline,
+  IoSunnyOutline,
+} from "react-icons/io5";
 import DefaultButton from "./ui/Button/DefaultButton";
 import Link from "./ui/Link";
 
@@ -45,6 +51,8 @@ export default function Navbar({
     );
   }, []);
 
+  const { theme, setTheme } = useTheme();
+
   const pathname: string = usePathname();
   return (
     <nav
@@ -81,7 +89,7 @@ export default function Navbar({
             ))}
           </ul>
         </div>
-        <div>
+        <div className="flex gap-2">
           <DefaultButton
             onClick={handleTest}
             iconStart={
@@ -90,6 +98,13 @@ export default function Navbar({
           >
             {logged_in_test ? "username" : "log in"}
           </DefaultButton>
+          <DefaultButton
+            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+            iconStart={
+              theme === "light" ? <IoMoonOutline /> : <IoSunnyOutline />
+            }
+            title="change theme color"
+          ></DefaultButton>
         </div>
       </div>
     </nav>
