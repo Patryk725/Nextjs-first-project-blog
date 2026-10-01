@@ -1,7 +1,9 @@
 import type { AdapterAccountType } from "@auth/core/adapters";
 import {
   boolean,
+  index,
   integer,
+  pgEnum,
   pgTable,
   primaryKey,
   text,
@@ -15,6 +17,8 @@ const connectionString = "postgres://postgres:postgres@localhost:5432/drizzle";
 const pool = postgres(connectionString, { max: 1 });
 
 export const db = drizzle(pool);
+
+// * nextauth
 
 export const users = pgTable("user", {
   id: text("id")
@@ -43,13 +47,11 @@ export const accounts = pgTable(
     id_token: text("id_token"),
     session_state: text("session_state"),
   },
-  account => [
-    {
-      compoundKey: primaryKey({
-        columns: [account.provider, account.providerAccountId],
-      }),
-    },
-  ],
+  account => ({
+    compoundKey: primaryKey({
+      columns: [account.provider, account.providerAccountId],
+    }),
+  }),
 );
 
 export const sessions = pgTable("session", {
@@ -67,13 +69,11 @@ export const verificationTokens = pgTable(
     token: text("token").notNull(),
     expires: timestamp("expires", { mode: "date" }).notNull(),
   },
-  verificationToken => [
-    {
-      compositePk: primaryKey({
-        columns: [verificationToken.identifier, verificationToken.token],
-      }),
-    },
-  ],
+  verificationToken => ({
+    compositePk: primaryKey({
+      columns: [verificationToken.identifier, verificationToken.token],
+    }),
+  }),
 );
 
 export const authenticators = pgTable(
@@ -90,24 +90,45 @@ export const authenticators = pgTable(
     credentialBackedUp: boolean("credentialBackedUp").notNull(),
     transports: text("transports"),
   },
-  authenticator => [
-    {
-      compositePK: primaryKey({
-        columns: [authenticator.userId, authenticator.credentialID],
-      }),
-    },
+  authenticator => ({
+    compositePK: primaryKey({
+      columns: [authenticator.userId, authenticator.credentialID],
+    }),
+  }),
+);
+
+// * MY tables
+
+export const categories = pgEnum("blog_category", [
+  "programming",
+  "cooking",
+  "fitness",
+  "other",
+]);
+
+export const blogs = pgTable(
+  "blogs",
+  {
+    id: text("id").primaryKey(),
+    userId: text("userId")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    title: text("title").notNull(),
+    content: text("content").notNull(),
+    createdAt: timestamp("createdAt").defaultNow().notNull(),
+    category: categories("category").notNull(),
+  },
+  table => [
+    index("blogs_category_created_idx").on(
+      table.category,
+      table.createdAt.desc(),
+    ),
+    index("blogs_user_idx").on(table.userId),
   ],
 );
 
-// MY tables
-
-export const blogs = pgTable("blogs", {
-  id: text("id").primaryKey(),
-  userId: text("userId")
-    .notNull()
-    .references(() => users.id, { onDelete: "cascade" }),
-  content: text("content").notNull(),
-  createdAt: timestamp("createdAt").defaultNow().notNull(),
+const blogSchema = createInsertSchema(blogs, {
+  title: schema => schema.min(3).max(100),
 });
 
 export const ratings = pgTable("ratings", {
