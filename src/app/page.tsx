@@ -1,13 +1,7 @@
-"use client";
-
 import Hero from "@/components/Hero";
-import {
-  IoCreateOutline,
-  IoPeopleOutline,
-  IoShareOutline,
-} from "react-icons/io5";
+import { IoCreateOutline, IoPeopleOutline } from "react-icons/io5";
 
-export default function Home() {
+export default async function Home() {
   return (
     <section className="wrapper">
       <Hero
@@ -16,7 +10,6 @@ export default function Home() {
         symbols={[
           <IoCreateOutline key="create" />,
           <IoPeopleOutline key="people" />,
-          <IoShareOutline key="share" />,
         ]}
       />
       <div>text</div>
