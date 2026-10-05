@@ -1,17 +1,16 @@
-import DefaultButton from "./ui/Button/DefaultButton";
-
 type HeroProps = {
   title: string;
   description?: string;
   symbols?: [React.ReactElement?, React.ReactElement?];
   buttons?: React.ReactElement[];
+  children: React.ReactElement;
 };
 
 export default function Hero({
   title,
   description,
   symbols,
-  buttons,
+  children,
 }: HeroProps) {
   return (
     <section className="bleed relative min-h-[calc(100dvh-var(--main-nav-height,0px)-var(--secondary-nav-height,0px))] w-full items-center justify-center overflow-hidden py-6">
@@ -19,10 +18,7 @@ export default function Hero({
         <h1 className="text-5xl">{title}</h1>
         <div>{description}</div>
         <div className="flex gap-2">
-          <DefaultButton href="./articles" colorInvert>
-            Czytaj blogi
-          </DefaultButton>
-          <DefaultButton href="about-me">O mnie</DefaultButton>
+          <div>{children}</div>
         </div>
         <div>
           <div className="text-4xl">
