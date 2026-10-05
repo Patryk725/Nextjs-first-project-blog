@@ -2,6 +2,7 @@ import Navbar from "@/components/Navbar";
 import type { Metadata } from "next";
 import { Montserrat, Montserrat_Alternates } from "next/font/google";
 import "./globals.css";
+import { Providers } from "./providers";
 
 export const APP_NAME = process.env.NEXT_PUBLIC_APP_NAME ?? "App";
 export const APP_SLUG = process.env.NEXT_PUBLIC_APP_SLUG ?? "app";
@@ -34,12 +35,12 @@ export default function RootLayout({
       className={`${montserrat.variable} ${montserratAlternates.variable} h-full antialiased`}
     >
       <body className="wrapper flex min-h-full flex-col">
-        {/* <Providers> */}
-        <main className="content mt-0">
-          <Navbar sticky />
-          {children}
-        </main>
-        {/* </Providers> */}
+        <Providers>
+          <main className="content mt-0">
+            <Navbar sticky />
+            {children}
+          </main>
+        </Providers>
       </body>
     </html>
   );

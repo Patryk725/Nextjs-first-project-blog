@@ -8,6 +8,7 @@ import {
   primaryKey,
   text,
   timestamp,
+  unique,
 } from "drizzle-orm/pg-core";
 import { createInsertSchema } from "drizzle-zod";
 
@@ -107,7 +108,9 @@ export const categories = pgEnum("blog_category", [
 export const blogs = pgTable(
   "blogs",
   {
-    id: text("id").primaryKey(),
+    id: text("id")
+      .primaryKey()
+      .$defaultFn(() => crypto.randomUUID()),
     userId: text("userId")
       .notNull()
       .references(() => users.id, { onDelete: "cascade" }),
@@ -125,21 +128,27 @@ export const blogs = pgTable(
   ],
 );
 
-const blogSchema = createInsertSchema(blogs, {
+export const newBlogSchema = createInsertSchema(blogs, {
   title: schema => schema.min(3).max(100),
-});
+}).omit({ id: true, userId: true, createdAt: true });
 
-export const ratings = pgTable("ratings", {
-  id: text("id").primaryKey(),
-  userId: text("userId")
-    .notNull()
-    .references(() => users.id, { onDelete: "cascade" }),
-  blogId: text("blogId")
-    .notNull()
-    .references(() => blogs.id, { onDelete: "cascade" }),
-  rating: integer("rating").notNull(),
-});
+export const ratings = pgTable(
+  "ratings",
+  {
+    id: text("id")
+      .primaryKey()
+      .$defaultFn(() => crypto.randomUUID()),
+    userId: text("userId")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    blogId: text("blogId")
+      .notNull()
+      .references(() => blogs.id, { onDelete: "cascade" }),
+    rating: integer("rating").notNull(),
+  },
+  table => [unique("ratings_user_blog_unique").on(table.userId, table.blogId)],
+);
 
-const ratingSchema = createInsertSchema(ratings, {
+export const newRatingSchema = createInsertSchema(ratings, {
   rating: schema => schema.int().min(1).max(5),
-});
+}).omit({ id: true, userId: true });

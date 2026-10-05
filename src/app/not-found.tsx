@@ -24,7 +24,8 @@ export default function NotFound() {
           <p>Upewnij się, że wpisałe/aś adres poprawnie.</p>
         </div>
         <div className="flex gap-4">
-          <DefaultButton onClick={() => router.back()}>Wróć</DefaultButton>
+          {/* <DefaultButton onClick={() => router.back()}>Wróć</DefaultButton>  */}{" "}
+          {/* po zmianie butotn na link, nie  */}
           <DefaultButton onClick={() => router.push("/")}>
             Strona główna
           </DefaultButton>
