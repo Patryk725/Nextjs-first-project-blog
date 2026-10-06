@@ -4,7 +4,7 @@ import clsx from "clsx";
 import Link from "next/link";
 import React from "react";
 
-type ButtonProps = {
+type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
   href?: string;
   onClick?: () => void;
   type?: "button" | "submit";

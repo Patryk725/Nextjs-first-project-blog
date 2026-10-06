@@ -26,7 +26,7 @@ export default async function Home() {
           >
             Przejdź do archiwum
           </DefaultButton>
-          <DefaultButton href="/blog-add" iconStart={<IoPencilOutline />}>
+          <DefaultButton href="/blog/new" iconStart={<IoPencilOutline />}>
             Napisz artykuł
           </DefaultButton>
         </div>
