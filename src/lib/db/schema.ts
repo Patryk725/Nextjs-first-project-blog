@@ -48,8 +48,12 @@ export const blogs = pgTable(
 );
 
 export const newBlogSchema = createInsertSchema(blogs, {
-  title: schema => schema.min(3).max(100),
+  title: schema => schema.trim().min(3).max(100),
+  content: schema => schema.trim().min(3),
 }).omit({ id: true, userId: true, createdAt: true });
+
+export type Blog = typeof blogs.$inferSelect;
+export type NewBlog = typeof blogs.$inferInsert;
 
 export const ratings = pgTable(
   "ratings",

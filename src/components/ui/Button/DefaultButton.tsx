@@ -1,5 +1,3 @@
-// I had to use AI to do this
-
 import clsx from "clsx";
 import Link from "next/link";
 import React from "react";

@@ -31,7 +31,9 @@ export default async function Home() {
           </DefaultButton>
         </div>
       </Hero>
-      <div>text</div>
+      {/* <BlogsList sortBy="latest"> */}
+      {/* <BlogsList sortBy="oldest"> */}
+      {/* <BlogsList sortBy="review"> */}
     </section>
   );
 }
