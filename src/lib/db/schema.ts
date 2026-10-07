@@ -8,6 +8,7 @@ import {
   unique,
 } from "drizzle-orm/pg-core";
 import { createInsertSchema } from "drizzle-zod";
+import { z } from "zod";
 import { user } from "../../../auth-schema";
 
 // const connectionString = "postgres://postgres:postgres@localhost:5432/drizzle";
@@ -35,8 +36,10 @@ export const blogs = pgTable(
       .references(() => user.id, { onDelete: "cascade" }),
     title: text("title").notNull(),
     content: text("content").notNull(),
-    createdAt: timestamp("createdAt").defaultNow().notNull(),
+    createdAt: timestamp("created_at").defaultNow().notNull(),
     category: categories("category").notNull(),
+    imageUrl: text("image_url").notNull(),
+    imageKey: text("image_key").notNull(),
   },
   table => [
     index("blogs_category_created_idx").on(
@@ -50,6 +53,8 @@ export const blogs = pgTable(
 export const newBlogSchema = createInsertSchema(blogs, {
   title: schema => schema.trim().min(3).max(100),
   content: schema => schema.trim().min(3),
+  imageUrl: z.url({ protocol: /^https$/, hostname: /\.ufs\.sh$/ }),
+  imageKey: schema => schema.min(1),
 }).omit({ id: true, userId: true, createdAt: true });
 
 export type Blog = typeof blogs.$inferSelect;

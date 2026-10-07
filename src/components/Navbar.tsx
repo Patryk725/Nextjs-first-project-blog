@@ -52,7 +52,6 @@ export default function Navbar({
   }, []);
 
   const { theme, setTheme } = useTheme();
-  const theme_src = theme === "dark" ? "/logo_dark.png" : "/logo.png";
 
   const pathname: string = usePathname();
   return (
@@ -74,6 +73,7 @@ export default function Navbar({
                 alt="logo"
                 width={168}
                 height={45}
+                loading="eager"
               />
               <Image
                 className="hidden dark:block"
@@ -81,6 +81,7 @@ export default function Navbar({
                 alt="logo"
                 width={168}
                 height={45}
+                loading="eager"
               />
             </Link>
           </div>
