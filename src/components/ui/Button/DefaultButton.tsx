@@ -24,6 +24,7 @@ export default function DefaultButton({
   iconSize = 20,
   colorInvert = false,
   children,
+  ...props
 }: ButtonProps) {
   const className = clsx(
     "flex cursor-pointer items-center gap-3 rounded-sm border px-3 py-2 whitespace-nowrap",
@@ -31,6 +32,7 @@ export default function DefaultButton({
       "text-foreground bg-background border-foreground hover:bg-background-hover",
     colorInvert &&
       "text-background bg-foreground border-background hover:bg-foreground-hover",
+    disabled && "bg-slate-400 dark:bg-slate-800",
   );
 
   const content = (
@@ -50,7 +52,7 @@ export default function DefaultButton({
     </>
   );
 
-  if (href) {
+  if (href && !disabled) {
     return (
       <Link href={href} className={className}>
         {content}
@@ -64,6 +66,7 @@ export default function DefaultButton({
       onClick={onClick}
       disabled={disabled}
       className={className}
+      {...props}
     >
       {content}
     </button>

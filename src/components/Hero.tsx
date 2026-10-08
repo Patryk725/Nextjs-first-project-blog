@@ -24,7 +24,7 @@ export default function Hero({
           <div className="text-4xl">
             {symbols?.[0] && (
               <span
-                className="absolute -top-6 left-2 inline-block -rotate-12 opacity-10"
+                className="absolute -top-6 left-2 -z-1 inline-block -rotate-12 opacity-10"
                 style={{ fontSize: "450px" }}
               >
                 {symbols[0]}
@@ -33,7 +33,7 @@ export default function Hero({
 
             {symbols?.[1] && (
               <span
-                className="absolute right-2 -bottom-6 inline-block rotate-12 opacity-5"
+                className="absolute right-2 -bottom-6 -z-1 inline-block rotate-12 opacity-5"
                 style={{ fontSize: "450px" }}
               >
                 {symbols[1]}

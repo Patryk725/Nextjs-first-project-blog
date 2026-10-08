@@ -14,7 +14,7 @@ export default function NotFound() {
             src="https://httpducks.com/404.jpg"
             alt="404 image"
             width={400}
-            height={400}
+            height={350}
           />
         </div>
         <div className="flex flex-col items-center justify-center gap-4 text-center">

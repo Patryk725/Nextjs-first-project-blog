@@ -1,3 +1,9 @@
+import { AddBlogForm } from "@/components/ui/forms/blog/add";
+
 export default function Page() {
-  return <section></section>;
+  return (
+    <section>
+      <AddBlogForm />
+    </section>
+  );
 }

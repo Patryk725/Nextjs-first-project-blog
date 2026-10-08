@@ -1,5 +1,7 @@
 import Hero from "@/components/Hero";
 import DefaultButton from "@/components/ui/Button/DefaultButton";
+import { auth } from "@/lib/auth";
+import { headers } from "next/headers";
 import {
   IoCreateOutline,
   IoNewspaperOutline,
@@ -8,6 +10,7 @@ import {
 } from "react-icons/io5";
 
 export default async function Home() {
+  const session = await auth.api.getSession({ headers: await headers() });
   return (
     <section className="wrapper">
       <Hero
@@ -26,7 +29,12 @@ export default async function Home() {
           >
             Przejdź do archiwum
           </DefaultButton>
-          <DefaultButton href="/blog/new" iconStart={<IoPencilOutline />}>
+          <DefaultButton
+            href="/blog/new"
+            iconStart={<IoPencilOutline />}
+            disabled={!session}
+            title={!session ? "Zaloguj się, aby napisać artykuł" : ""}
+          >
             Napisz artykuł
           </DefaultButton>
         </div>

@@ -5,12 +5,8 @@ import { useTheme } from "next-themes";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
-import {
-  IoLogInOutline,
-  IoMoonOutline,
-  IoPersonCircleOutline,
-  IoSunnyOutline,
-} from "react-icons/io5";
+import { IoMoonOutline, IoSunnyOutline } from "react-icons/io5";
+import { AuthButton } from "./ui/Button/AuthButton";
 import DefaultButton from "./ui/Button/DefaultButton";
 import Link from "./ui/Link";
 
@@ -99,14 +95,7 @@ export default function Navbar({
           </ul>
         </div>
         <div className="flex gap-2">
-          <DefaultButton
-            onClick={handleTest}
-            iconStart={
-              logged_in_test ? <IoPersonCircleOutline /> : <IoLogInOutline />
-            }
-          >
-            {logged_in_test ? "username" : "log in"}
-          </DefaultButton>
+          <AuthButton />
           <DefaultButton
             onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
             iconStart={
