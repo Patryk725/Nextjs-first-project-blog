@@ -1,4 +1,5 @@
 import Hero from "@/components/Hero";
+import { BlogsList } from "@/components/ui/BlogList";
 import DefaultButton from "@/components/ui/Button/DefaultButton";
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
@@ -39,9 +40,9 @@ export default async function Home() {
           </DefaultButton>
         </div>
       </Hero>
-      {/* <BlogsList sortBy="latest"> */}
-      {/* <BlogsList sortBy="oldest"> */}
-      {/* <BlogsList sortBy="review"> */}
+      <BlogsList sortBy="latest" />
+      {/* <BlogsList sortBy="oldest" /> */}
+      {/* <BlogsList sortBy="review" /> */}
     </section>
   );
 }

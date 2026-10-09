@@ -50,6 +50,12 @@ body {
   @apply bg-slate-600;
 }
 
+input,
+select,
+textarea {
+  @apply border px-4 py-2;
+}
+
 :root [disabled] {
   @apply bg-slate-600;
 }

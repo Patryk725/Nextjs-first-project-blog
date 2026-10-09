@@ -16,12 +16,16 @@ export async function createBlog(
 ): Promise<BlogFormState> {
   const { user } = await verifySession();
 
-  const parsed = newBlogSchema.safeParse(Object.fromEntries(formData));
+  const input = Object.fromEntries(
+    [...formData].filter(([, value]) => value !== ""),
+  );
+  const parsed = newBlogSchema.safeParse(input);
   if (!parsed.success) return { errors: z.flattenError(parsed.error) };
 
   try {
     await db.insert(blogs).values({ ...parsed.data, userId: user.id });
-  } catch {
+  } catch (error) {
+    console.error(error);
     return { message: "Nie udało się zapisać bloga" };
   }
 
