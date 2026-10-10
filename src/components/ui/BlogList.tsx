@@ -1,3 +1,4 @@
+import { Rating } from "@/components/ui/Rating";
 import {
   getLatestBlogs,
   getOldestBlogs,
@@ -68,9 +69,13 @@ export async function BlogsList({ sortBy }: BlogsListProps) {
                   </>
                 )}
               </div>
-              <span className="text-foreground-hover text-sm">
-                {blog.category}
-              </span>
+              <div className="flex justify-between text-sm">
+                <span className="text-foreground-hover">{blog.category}</span>
+                <Rating
+                  avgRating={blog.avgRating}
+                  ratingsCount={blog.ratingsCount}
+                />
+              </div>
               <h3 className="font-bold">{blog.title}</h3>
               <p>{blog.content}</p>
             </Link>

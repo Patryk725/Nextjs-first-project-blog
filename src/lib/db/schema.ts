@@ -80,5 +80,5 @@ export const ratings = pgTable(
 );
 
 export const newRatingSchema = createInsertSchema(ratings, {
-  rating: schema => schema.int().min(1).max(5),
+  rating: schema => schema.int().min(1).max(10),
 }).omit({ id: true, userId: true });
