@@ -2,6 +2,7 @@ import { db } from "@/lib/db";
 import { blogs, ratings } from "@/lib/db/schema";
 import { asc, avg, count, desc, eq, getTableColumns, sql } from "drizzle-orm";
 import "server-only";
+import { user } from "../../../../auth-schema";
 
 const avgRating = avg(ratings.rating);
 
@@ -43,17 +44,21 @@ export async function getTopRatedBlogs(limit = 9) {
 }
 
 // /blog/[id]
+
 export async function getBlogById(id: string) {
   const [blog] = await db
     .select({
       ...getTableColumns(blogs),
       avgRating,
       ratingsCount: count(ratings.id),
+      authorName: user.name,
+      authorImage: user.image,
     })
     .from(blogs)
+    .innerJoin(user, eq(user.id, blogs.userId))
     .leftJoin(ratings, eq(ratings.blogId, blogs.id))
     .where(eq(blogs.id, id))
-    .groupBy(blogs.id)
+    .groupBy(blogs.id, user.id)
     .limit(1);
   return blog;
 }

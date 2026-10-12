@@ -41,8 +41,8 @@ export default async function Home() {
         </div>
       </Hero>
       <BlogsList sortBy="latest" />
-      {/* <BlogsList sortBy="oldest" /> */}
-      {/* <BlogsList sortBy="review" /> */}
+      <BlogsList sortBy="oldest" />
+      <BlogsList sortBy="review" />
     </section>
   );
 }

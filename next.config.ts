@@ -7,6 +7,7 @@ const nextConfig: NextConfig = {
       new URL("https://httpducks.com/*.jpg"),
       { protocol: "https", hostname: "29bjc1a365.ufs.sh", pathname: "/f/*" },
       { protocol: "https", hostname: "placehold.co" },
+      { protocol: "https", hostname: "avatars.githubusercontent.com" },
     ],
   },
   reactCompiler: true,

@@ -14,7 +14,7 @@ export default async function Page({
   if (!blog) notFound();
 
   return (
-    <article className="bg-background-hover flex flex-col gap-4 p-8">
+    <article className="bg-background-hover flex flex-col gap-4 rounded-sm p-8">
       {blog.imageUrl && (
         <div className="relative aspect-8/5 w-full overflow-hidden rounded-sm">
           <Image
@@ -32,6 +32,19 @@ export default async function Page({
       </div>
       <h1 className="text-2xl font-bold">{blog.title}</h1>
       <p className="whitespace-pre-line">{blog.content}</p>
+      <hr />
+      <div className="flex items-center justify-end gap-2 text-sm">
+        {blog.authorImage && (
+          <Image
+            src={blog.authorImage}
+            alt=""
+            width={32}
+            height={32}
+            className="rounded-full"
+          />
+        )}
+        <span>{blog.authorName}</span>
+      </div>
     </article>
   );
 }

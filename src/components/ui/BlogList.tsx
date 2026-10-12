@@ -29,7 +29,7 @@ export async function BlogsList({ sortBy }: BlogsListProps) {
     `https://placehold.co/400x250/${bg}/${fg}/webp?font=montserrat&text=${encodeURIComponent(`${title}\\n(brak zdjęcia)`)}`;
 
   return (
-    <section className="flex flex-col gap-4">
+    <section className="my-8 flex flex-col gap-4">
       <h2 className="text-2xl font-bold">{headings[sortBy]} wpisy</h2>
       <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {blogs.map(blog => (
