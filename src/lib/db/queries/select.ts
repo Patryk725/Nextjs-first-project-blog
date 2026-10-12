@@ -62,3 +62,27 @@ export async function getBlogById(id: string) {
     .limit(1);
   return blog;
 }
+
+export async function getBlogsByUser(userId: string) {
+  return db
+    .select(blogPreview)
+    .from(blogs)
+    .leftJoin(ratings, eq(ratings.blogId, blogs.id))
+    .where(eq(blogs.userId, userId))
+    .groupBy(blogs.id)
+    .orderBy(desc(blogs.createdAt));
+}
+
+export async function getRatingsByUser(userId: string) {
+  return db
+    .select({
+      id: ratings.id,
+      rating: ratings.rating,
+      blogId: blogs.id,
+      blogTitle: blogs.title,
+    })
+    .from(ratings)
+    .innerJoin(blogs, eq(blogs.id, ratings.blogId))
+    .where(eq(ratings.userId, userId))
+    .orderBy(desc(blogs.createdAt));
+}

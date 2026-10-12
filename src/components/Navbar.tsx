@@ -4,7 +4,7 @@ import { clsx } from "clsx";
 import { useTheme } from "next-themes";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { IoMoonOutline, IoSunnyOutline } from "react-icons/io5";
 import { AuthButton } from "./ui/Button/AuthButton";
 import DefaultButton from "./ui/Button/DefaultButton";
@@ -33,10 +33,6 @@ export default function Navbar({
   navLink = defaultLinks,
   className,
 }: NavProps) {
-  //! TEMP TESTING
-  const [logged_in_test, setTest] = useState<boolean>(false);
-  const handleTest = () => setTest(p => !p);
-
   const nav = useRef<HTMLElement | null>(null);
   useEffect(() => {
     if (!nav.current) return;
