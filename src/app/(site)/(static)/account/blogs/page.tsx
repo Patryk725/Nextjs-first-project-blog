@@ -1,8 +1,9 @@
 import DefaultButton from "@/components/ui/Button/DefaultButton";
+import { Modal } from "@/components/ui/Modal";
 import { verifySession } from "@/lib/dal";
 import { deleteBlog } from "@/lib/db/queries/delete";
 import { getBlogsByUser } from "@/lib/db/queries/select";
-import { IoAddOutline, IoCreateOutline, IoTrashOutline } from "react-icons/io5";
+import { IoAddOutline, IoCreateOutline } from "react-icons/io5";
 
 export default async function Page() {
   const { user } = await verifySession();
@@ -38,11 +39,12 @@ export default async function Page() {
               >
                 Edytuj
               </DefaultButton>
-              <form action={deleteBlog.bind(null, blog.id)}>
-                <DefaultButton type="submit" iconStart={<IoTrashOutline />}>
-                  Usuń
-                </DefaultButton>
-              </form>
+              <Modal
+                trigger="Usuń"
+                message="Czy na pewno chcesz usunąć ten wpis?"
+                confirmLabel="Usuń"
+                action={deleteBlog.bind(null, blog.id)}
+              />
             </div>
           </li>
         ))}

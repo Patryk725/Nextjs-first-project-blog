@@ -1,3 +1,4 @@
+import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import type { Metadata } from "next";
 import { Montserrat, Montserrat_Alternates } from "next/font/google";
@@ -40,6 +41,7 @@ export default function RootLayout({
           {children}
         </main>
         {/* </Providers> */}
+        <Footer />
       </body>
     </html>
   );
