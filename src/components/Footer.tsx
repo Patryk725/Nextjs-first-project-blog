@@ -9,7 +9,8 @@ export default function Footer() {
           <a
             href="https://github.com/Patryk725"
             rel="nofollow"
-            className="text-underline flex gap-2 hover:no-underline"
+            target="_blank"
+            className="flex gap-2 underline hover:no-underline"
           >
             Patrykka <IoOpenOutline />
           </a>
