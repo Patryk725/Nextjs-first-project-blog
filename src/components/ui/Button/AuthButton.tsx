@@ -1,11 +1,8 @@
 "use client";
 import DefaultButton from "@/components/ui/Button/DefaultButton";
+import { Modal } from "@/components/ui/Modal";
 import { authClient } from "@/lib/auth-client";
-import {
-  IoLogoGithub,
-  IoLogOutOutline,
-  IoPersonOutline,
-} from "react-icons/io5";
+import { IoLogoGithub, IoPersonOutline } from "react-icons/io5";
 
 export function AuthButton() {
   const { data: session, isPending } = authClient.useSession();
@@ -17,12 +14,14 @@ export function AuthButton() {
       <DefaultButton href="/account" iconStart={<IoPersonOutline />}>
         Moje konto
       </DefaultButton>
-      <DefaultButton
-        iconStart={<IoLogOutOutline />}
-        onClick={() => authClient.signOut()}
-      >
-        Wyloguj się
-      </DefaultButton>
+      <Modal
+        trigger="Wyloguj się"
+        message="Czy na pewno chcesz się wylogować?"
+        confirmLabel="Wyloguj"
+        action={async () => {
+          await authClient.signOut();
+        }}
+      />
     </div>
   ) : (
     <DefaultButton
