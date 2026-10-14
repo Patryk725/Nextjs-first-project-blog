@@ -6,6 +6,7 @@ import { UploadButton } from "@/utils/uploadthing";
 import Image from "next/image";
 import { useActionState, useState } from "react";
 import DefaultButton from "../../Button/DefaultButton";
+import { TextEditor } from "../../TextEditor";
 
 export function EditBlogForm({ blog }: { blog: Blog }) {
   const [state, formAction, pending] = useActionState(
@@ -32,7 +33,11 @@ export function EditBlogForm({ blog }: { blog: Blog }) {
       <FieldErrors errors={errors?.title} />
 
       <label htmlFor="content">Treść wpisu</label>
-      <textarea id="content" name="content" defaultValue={blog.content} />
+      <TextEditor
+        name="content"
+        labelId="content"
+        defaultValue={blog.content}
+      />
       <FieldErrors errors={errors?.content} />
 
       <label htmlFor="category">Kategoria wpisu</label>

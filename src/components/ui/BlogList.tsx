@@ -4,6 +4,7 @@ import {
   getOldestBlogs,
   getTopRatedBlogs,
 } from "@/lib/db/queries/select";
+import DOMPurify from "isomorphic-dompurify";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -77,7 +78,13 @@ export async function BlogsList({ sortBy }: BlogsListProps) {
                 />
               </div>
               <h3 className="font-bold">{blog.title}</h3>
-              <p>{blog.content}</p>
+              {/* <p>{blog.content}</p> */}
+              <p>
+                {DOMPurify.sanitize(blog.content, { ALLOWED_TAGS: [] }).slice(
+                  0,
+                  200,
+                )}
+              </p>
             </Link>
           </li>
         ))}

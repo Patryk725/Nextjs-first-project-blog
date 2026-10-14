@@ -7,6 +7,7 @@ import { UploadButton } from "@/utils/uploadthing";
 import Image from "next/image";
 import { useActionState, useState } from "react";
 import DefaultButton from "../../Button/DefaultButton";
+import { TextEditor } from "../../TextEditor";
 
 export function AddBlogForm() {
   const { data: session, isPending: sessionPending } = authClient.useSession();
@@ -34,7 +35,7 @@ export function AddBlogForm() {
       <FieldErrors errors={errors?.title} />
 
       <label htmlFor="content">Treść wpisu</label>
-      <textarea id="content" name="content" />
+      <TextEditor name="content" labelId="content" />
       <FieldErrors errors={errors?.content} />
 
       <label htmlFor="category">Kategoria wpisu</label>

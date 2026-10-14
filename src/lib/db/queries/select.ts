@@ -8,7 +8,6 @@ const avgRating = avg(ratings.rating);
 
 const blogPreview = {
   ...getTableColumns(blogs),
-  content: sql<string>`left(${blogs.content}, 200)`,
   avgRating,
   ratingsCount: count(ratings.id),
 };

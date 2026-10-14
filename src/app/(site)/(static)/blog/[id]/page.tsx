@@ -1,5 +1,6 @@
 import { Rating } from "@/components/ui/Rating";
 import { getBlogById } from "@/lib/db/queries/select";
+import DOMPurify from "isomorphic-dompurify";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 
@@ -31,7 +32,11 @@ export default async function Page({
         <Rating avgRating={blog.avgRating} ratingsCount={blog.ratingsCount} />
       </div>
       <h1 className="text-2xl font-bold">{blog.title}</h1>
-      <p className="whitespace-pre-line">{blog.content}</p>
+      {/* <p className="whitespace-pre-line">{blog.content}</p> */}
+      <div
+        className="prose dark:prose-invert max-w-none [--tw-prose-bullets:var(--foreground)] [--tw-prose-invert-bullets:var(--foreground)]"
+        dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(blog.content) }}
+      />
       <hr />
       <div className="flex items-center justify-end gap-2 text-sm">
         {blog.authorImage && (
