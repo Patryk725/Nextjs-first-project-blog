@@ -8,6 +8,8 @@ const nextConfig: NextConfig = {
       { protocol: "https", hostname: "29bjc1a365.ufs.sh", pathname: "/f/*" },
       { protocol: "https", hostname: "placehold.co" },
       { protocol: "https", hostname: "avatars.githubusercontent.com" },
+      { protocol: "https", hostname: "github.com" },
+      { protocol: "https", hostname: "raw.githubusercontent.com" },
     ],
   },
   reactCompiler: true,

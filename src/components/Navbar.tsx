@@ -60,7 +60,7 @@ export default function Navbar({
           <div className="p-4">
             <Link href="/">
               <Image
-                className="dark:hidden"
+                className="select-none dark:hidden"
                 src="/logo.png"
                 alt="logo"
                 width={168}
@@ -68,7 +68,7 @@ export default function Navbar({
                 loading="eager"
               />
               <Image
-                className="hidden dark:block"
+                className="hidden select-none dark:block"
                 src="/logo_dark.png"
                 alt="logo"
                 width={168}
