@@ -42,7 +42,6 @@ export default async function Page() {
         />
       </section>
 
-      {/* * wymiary = rzeczywiste wymiary banner.png */}
       <Image
         src={`https://raw.githubusercontent.com/${user}/${user}/main/banner.png`}
         alt={`Baner ${user}`}
