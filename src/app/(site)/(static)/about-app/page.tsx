@@ -16,13 +16,13 @@ const lorem =
 const data = [
   {
     title: "Docker",
-    label: "Środowisko lokalne",
+    label: "Środowisko",
     content: lorem,
     icon: <SiDocker color="#2496ED" />,
   },
   {
     title: "Git + GitHub",
-    label: "Kontrola wersji",
+    label: "Wersjonowanie",
     content: lorem,
     icon: <SiGit color="#F03C2E" />,
   },
