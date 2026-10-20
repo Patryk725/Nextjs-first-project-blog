@@ -66,12 +66,12 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
   });
   const scaleY = useSpring(scrollYProgress, {
     stiffness: 100,
-    damping: 30,
+    damping: 10,
     restDelta: 0.001,
   });
 
   return (
-    <div ref={ref} className="relative py-10">
+    <div ref={ref} className="relative mb-40 py-10">
       <div className="bg-foreground/20 absolute inset-y-0 left-4 w-0.5 -translate-x-1/2 md:left-1/2" />
       <motion.div
         style={{ scaleY }}
