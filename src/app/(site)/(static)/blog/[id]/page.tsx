@@ -1,7 +1,9 @@
 import UpsertRatingForm from "@/components/ui/forms/review/upsert";
 import { Rating } from "@/components/ui/Review";
+import { auth } from "@/lib/auth";
 import { getBlogById } from "@/lib/db/queries/select";
 import DOMPurify from "isomorphic-dompurify";
+import { headers } from "next/headers";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 
@@ -10,6 +12,7 @@ export default async function Page({
 }: {
   params: Promise<{ id: string }>;
 }) {
+  const session = await auth.api.getSession({ headers: await headers() });
   const { id } = await params;
   const blog = await getBlogById(id);
 
@@ -51,10 +54,12 @@ export default async function Page({
         )}
         <span>{blog.authorName}</span>
       </div>
-      <div className="flex flex-col gap-2">
-        <h2 className="font-bold">Oceń wpis</h2>
-        <UpsertRatingForm blogId={blog.id} />
-      </div>
+      {session && session.user.id !== blog.userId && (
+        <div className="flex flex-col gap-2">
+          <h2 className="font-bold">Oceń wpis</h2>
+          <UpsertRatingForm blogId={blog.id} />
+        </div>
+      )}
     </article>
   );
 }
