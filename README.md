@@ -2,13 +2,24 @@
 
 ### Set variables in `.env` and `.env.docker` (just remove `.example` from filename)
 
+### Remove ".example" part in:
+
+- `.env.example`
+- `.env.docker.example`
+
+...and fill it with valid data.
+
+### Run `docker compose up -d` to run local containers
+
+### Run `pnpm drizzle-kit push` to synchronize tables with db.
+
 ### Run the development server
 
 ```bash
 npm run dev
 # or
 yarn dev
-# or
+# or (preferred)
 pnpm dev
 # or
 bun dev
@@ -27,3 +38,16 @@ bun dev
 - I used `Docker` <img src="https://skillicons.dev/icons?i=docker" alt="Docker icon" width="32" align="center"> to containerize app.
 
 - I used <img src="https://skillicons.dev/icons?i=tailwind" alt="Tailwind CSS icon" width="32" align="center"> `Tailwind CSS` for easy and modern UI.
+
+## Features
+
+- Authorization, authentication
+- Image server (uploadthing) with <Image> optimalization
+- User dashboard with
+  - Users Reviews list (no sort and filter tho)
+  - Users blogs
+- Dark and light theme on client side
+- Static websies
+  - Homepage (Strona główna)
+  - About me page (O mnie)
+  - About app (O stronie)
