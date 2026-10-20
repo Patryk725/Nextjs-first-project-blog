@@ -1,10 +1,10 @@
 import DefaultButton from "@/components/ui/Button/DefaultButton";
+import UpsertRatingForm from "@/components/ui/forms/review/upsert";
 import { verifySession } from "@/lib/dal";
 import { deleteRating } from "@/lib/db/queries/delete";
 import { getRatingsByUser } from "@/lib/db/queries/select";
-import { RateBlog } from "@/lib/db/queries/upsert";
 import Link from "next/link";
-import { IoSaveOutline, IoTrashOutline } from "react-icons/io5";
+import { IoTrashOutline } from "react-icons/io5";
 
 export default async function Page() {
   const { user } = await verifySession();
@@ -25,19 +25,8 @@ export default async function Page() {
             <Link href={`/blog/${r.blogId}`} className="font-bold">
               {r.blogTitle}
             </Link>
-            <div className="flex gap-2">
-              <form action={RateBlog.bind(null, r.id)} className="flex gap-2">
-                <select name="rating" defaultValue={r.rating}>
-                  {Array.from({ length: 10 }, (_, i) => i + 1).map(n => (
-                    <option key={n} value={n}>
-                      {n}
-                    </option>
-                  ))}
-                </select>
-                <DefaultButton type="submit" iconStart={<IoSaveOutline />}>
-                  Zapisz
-                </DefaultButton>
-              </form>
+            <div className="flex items-center gap-2">
+              <UpsertRatingForm blogId={r.blogId} defaultRating={r.rating} />
               <form action={deleteRating.bind(null, r.id)}>
                 <DefaultButton type="submit" iconStart={<IoTrashOutline />}>
                   Usuń

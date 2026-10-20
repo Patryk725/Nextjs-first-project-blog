@@ -1,5 +1,6 @@
 "use client";
 
+import { authClient } from "@/lib/auth-client";
 import { clsx } from "clsx";
 import { useTheme } from "next-themes";
 import Image from "next/image";
@@ -44,6 +45,7 @@ export default function Navbar({
   }, []);
 
   const { theme, setTheme } = useTheme();
+  const { data: session } = authClient.useSession();
 
   const pathname: string = usePathname();
   return (
@@ -91,6 +93,21 @@ export default function Navbar({
           </ul>
         </div>
         <div className="flex gap-2">
+          {/* dev only */}
+          {process.env.NODE_ENV !== "production" && (
+            <DefaultButton
+              type="button"
+              onClick={async () => {
+                const data = { email: "test@test.pl", password: "testtest123" };
+                const { error } = await authClient.signIn.email(data);
+                if (error)
+                  await authClient.signUp.email({ ...data, name: "Tester" });
+              }}
+            >
+              {session ? `Zalogowano: ${session.user.name}` : "Konto testowe"}
+            </DefaultButton>
+          )}
+          {/* dev only */}
           <AuthButton />
           <DefaultButton
             onClick={() => setTheme(theme === "dark" ? "light" : "dark")}

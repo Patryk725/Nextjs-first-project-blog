@@ -4,6 +4,9 @@ import * as schema from "../../auth-schema";
 import { db } from "./db";
 
 export const auth = betterAuth({
+  emailAndPassword: {
+    enabled: process.env.NODE_ENV !== "production",
+  },
   socialProviders: {
     github: {
       clientId: process.env.GITHUB_CLIENT_ID!,

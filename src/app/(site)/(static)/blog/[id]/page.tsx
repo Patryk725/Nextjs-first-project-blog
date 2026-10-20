@@ -1,3 +1,4 @@
+import UpsertRatingForm from "@/components/ui/forms/review/upsert";
 import { Rating } from "@/components/ui/Review";
 import { getBlogById } from "@/lib/db/queries/select";
 import DOMPurify from "isomorphic-dompurify";
@@ -49,6 +50,10 @@ export default async function Page({
           />
         )}
         <span>{blog.authorName}</span>
+      </div>
+      <div className="flex flex-col gap-2">
+        <h2 className="font-bold">Oceń wpis</h2>
+        <UpsertRatingForm blogId={blog.id} />
       </div>
     </article>
   );

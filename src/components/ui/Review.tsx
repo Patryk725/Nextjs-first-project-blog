@@ -16,14 +16,18 @@ export function Stars({ value }: { value: number }) {
   );
 }
 
-type RatingProps = { avgRating: string | null; ratingsCount: number };
+type RatingProps = {
+  avgRating: string | null;
+  ratingsCount: number;
+  stars?: boolean;
+};
 
-export function Rating({ avgRating, ratingsCount }: RatingProps) {
+export function Rating({ avgRating, ratingsCount, stars = true }: RatingProps) {
   if (!avgRating) return <span>brak ocen</span>;
 
   return (
     <span className="flex items-center gap-2">
-      <Stars value={Math.round(Number(avgRating))} />
+      {stars && <Stars value={Math.round(Number(avgRating))} />}
       {(Number(avgRating) / 2).toFixed(1)}/5 ({ratingsCount})
     </span>
   );

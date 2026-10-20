@@ -75,6 +75,7 @@ export async function BlogsList({ sortBy }: BlogsListProps) {
                 <Rating
                   avgRating={blog.avgRating}
                   ratingsCount={blog.ratingsCount}
+                  stars={false}
                 />
               </div>
               <h3 className="font-bold">{blog.title}</h3>
