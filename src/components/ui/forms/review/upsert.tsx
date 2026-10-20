@@ -1,14 +1,21 @@
 "use client";
 import { starIcon } from "@/components/ui/Review";
+import { rateBlog } from "@/lib/db/queries/upsert";
 import { useActionState, useState } from "react";
 
-export default function RateBlog({ blogId }: { blogId: string }) {
+export default function UpsertRatingForm({
+  blogId,
+  defaultRating = 0,
+}: {
+  blogId: string;
+  defaultRating?: number;
+}) {
   const [state, formAction, pending] = useActionState(
-    RateBlog.bind(null, blogId),
+    rateBlog.bind(null, blogId),
     undefined,
   );
   const [hover, setHover] = useState(0);
-  const [selected, setSelected] = useState(0);
+  const [selected, setSelected] = useState(defaultRating);
 
   return (
     <form action={formAction} className="flex flex-col gap-2">
