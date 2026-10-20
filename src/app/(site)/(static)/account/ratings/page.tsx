@@ -2,7 +2,7 @@ import DefaultButton from "@/components/ui/Button/DefaultButton";
 import { verifySession } from "@/lib/dal";
 import { deleteRating } from "@/lib/db/queries/delete";
 import { getRatingsByUser } from "@/lib/db/queries/select";
-import { updateRating } from "@/lib/db/queries/update";
+import { RateBlog } from "@/lib/db/queries/upsert";
 import Link from "next/link";
 import { IoSaveOutline, IoTrashOutline } from "react-icons/io5";
 
@@ -26,10 +26,7 @@ export default async function Page() {
               {r.blogTitle}
             </Link>
             <div className="flex gap-2">
-              <form
-                action={updateRating.bind(null, r.id)}
-                className="flex gap-2"
-              >
+              <form action={RateBlog.bind(null, r.id)} className="flex gap-2">
                 <select name="rating" defaultValue={r.rating}>
                   {Array.from({ length: 10 }, (_, i) => i + 1).map(n => (
                     <option key={n} value={n}>

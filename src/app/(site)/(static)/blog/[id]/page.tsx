@@ -1,4 +1,4 @@
-import { Rating } from "@/components/ui/Rating";
+import { Rating } from "@/components/ui/Review";
 import { getBlogById } from "@/lib/db/queries/select";
 import DOMPurify from "isomorphic-dompurify";
 import Image from "next/image";

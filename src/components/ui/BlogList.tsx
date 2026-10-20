@@ -1,4 +1,3 @@
-import { Rating } from "@/components/ui/Rating";
 import {
   getLatestBlogs,
   getOldestBlogs,
@@ -7,6 +6,7 @@ import {
 import DOMPurify from "isomorphic-dompurify";
 import Image from "next/image";
 import Link from "next/link";
+import { Rating } from "./Review";
 
 type BlogsListProps = { sortBy: "latest" | "oldest" | "review" };
 
