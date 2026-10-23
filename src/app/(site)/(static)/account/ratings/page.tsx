@@ -1,20 +1,31 @@
 import DefaultButton from "@/components/ui/Button/DefaultButton";
 import UpsertRatingForm from "@/components/ui/forms/review/upsert";
+import { Pagination } from "@/components/ui/Pagination";
+import { Search } from "@/components/ui/Search";
 import { verifySession } from "@/lib/dal";
 import { deleteRating } from "@/lib/db/queries/delete";
 import { getRatingsByUser } from "@/lib/db/queries/select";
 import Link from "next/link";
 import { IoTrashOutline } from "react-icons/io5";
 
-export default async function Page() {
+export default async function Page(props: {
+  searchParams: Promise<{ q?: string; page?: string }>;
+}) {
   const { user } = await verifySession();
-  const userRatings = await getRatingsByUser(user.id);
+  const { q, page } = await props.searchParams;
+  const { ratings: userRatings, totalPages } = await getRatingsByUser({
+    userId: user.id,
+    q,
+    page: Number(page) || 1,
+  });
 
   return (
     <div className="flex flex-col gap-4">
       <h2 className="text-xl font-bold">Moje oceny</h2>
 
-      {!userRatings.length && <p>Nie oceniłeś jeszcze żadnego wpisu</p>}
+      <Search placeholder="Szukaj po tytule wpisu" />
+
+      {!userRatings.length && <p>Brak ocen</p>}
 
       <ul className="flex flex-col gap-3">
         {userRatings.map(r => (
@@ -36,6 +47,8 @@ export default async function Page() {
           </li>
         ))}
       </ul>
+
+      <Pagination totalPages={totalPages} />
     </div>
   );
 }
