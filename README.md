@@ -51,3 +51,24 @@ bun dev
   - Homepage (Strona główna)
   - About me page (O mnie)
   - About app (O stronie)
+
+## Screenshots
+
+### Homepage (light + dark mode)
+
+![Homepage dark mode](readme_assets/homepage.png)
+![Homepage light mode](readme_assets/homepage_dark.png)
+
+Don't mind errors just like I do. (do the "lalala don't see it" technique).
+
+### Articles (archive, single, add/edit)
+
+![Article archive](readme_assets/articles.png)
+![Article add](readme_assets/article.png)
+![Article edit](readme_assets/article_add.png)
+
+Single archive is zoomed to 70% to fit in the screenshot.
+
+### Dashboard (users' articles + ratings)
+
+![Dashboard](readme_assets/dashboard.png)
