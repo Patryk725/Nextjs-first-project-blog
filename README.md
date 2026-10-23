@@ -33,7 +33,7 @@ bun dev
 
 - I used `postgreSQL` <img src="https://skillicons.dev/icons?i=postgresql" alt="PostgreSQL icon" width="32" align="center"> as the database.
 
-- I used `Git` <img src="https://skillicons.dev/icons?i=git " alt="Git and GitHub icons" width="32" align="center">and `GitHub` <img src="https://skillicons.dev/icons?i=github" alt="Git and GitHub icons" width="32" align="center"> for version control.
+- I used `Git` <img src="https://skillicons.dev/icons?i=git " alt="Git and GitHub icons" width="32" align="center"> and `GitHub` <img src="https://skillicons.dev/icons?i=github" alt="Git and GitHub icons" width="32" align="center"> for version control.
 
 - I used `Docker` <img src="https://skillicons.dev/icons?i=docker" alt="Docker icon" width="32" align="center"> to containerize app.
 
